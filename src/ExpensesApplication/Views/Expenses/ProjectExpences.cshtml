@@ -1,0 +1,94 @@
+@model ExpensesApplication.ViewModels.ProjectExpenseViewModel
+
+@{
+    ViewData["Title"] = "ProjectExpences";
+}
+
+<h2>ProjectExpences</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+
+    <tbody>
+        @foreach (var Expense in Model.Expenses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.CCExpenseType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.Chargeable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.Currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.ExpenseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.ExpenseStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.Expensetype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.Image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.ProjectCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.RejectionInfo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.SubmitDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Expense.UserName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@Expense.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@Expense.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@Expense.ID">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<p>Projects table </p>
+<table class="table">
+
+    <tbody>
+        @foreach (var Project in Model.Projects)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Project.Customer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Project.Manager)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Project.Practice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Project.ProjectCode)
+                </td>
+                <td>
+                    <!--how do I get it routing to the correct route?-->
+                    <!--it's currently in the expense controller and expense view folder, how do I get to projects-->
+                    <a asp-controller="Projects" asp-action="Edit" asp-route-id="@Project.ID">Edit</a> |
+                    <a asp-controller="Projects" asp-action="Details" asp-route-id="@Project.ID">Details</a> |
+                    <a asp-controller="Projects" asp-action="Delete" asp-route-id="@Project.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
